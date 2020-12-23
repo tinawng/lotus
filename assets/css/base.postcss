@@ -1,0 +1,91 @@
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+
+  font-family: "Poppins ExtraLight";
+  font-size: 18px;
+  @apply bg-brand-white text-brand-black;
+  
+  box-sizing: border-box;
+}
+
+strong {
+}
+
+h1 {
+}
+h2 {
+}
+h3 {
+  @apply text-2xl;
+}
+h4 {
+}
+h5 {
+}
+h6 {
+}
+
+p {
+  @apply mb-4;
+}
+
+input[type='text'], input[type='password'] {
+  @apply w-full;
+  @apply bg-brand-white placeholder-brand-black;
+  @apply text-lg;
+  @apply border-b border-brand-black;
+  @apply pl-6 pb-2;
+  letter-spacing: .3rem;
+}
+
+
+.flex-center-x {
+  @apply flex justify-center;
+}
+.flex-vertical-center-x {
+  @apply flex flex-col items-center;
+}
+.flex-center-y {
+  @apply flex items-center;
+}
+.flex-vertical-center-y {
+  @apply flex flex-col justify-center;
+}
+.flex-center {
+  @apply flex-center-x flex-center-y;
+}
+.flex-vertical-center {
+  @apply flex-vertical-center-x flex-vertical-center-y;
+}
+
+.button-square {
+  @apply w-10 h-10;
+  @apply border border-brand-black;
+  @apply text-2xl;
+  
+  transition: all 0.414s ease-out !important;
+}
+.button-square:hover {
+  @apply bg-brand-black text-brand-white;
+}
+
+button:focus {
+  outline: none !important;
+}
+
+/* 🍱 Refs fonts */
+@font-face {
+  font-family: "Poppins Regular";
+  src: url("../../static/fonts/Poppins-Regular.ttf");
+}
+@font-face {
+  font-family: "Poppins ExtraLight";
+  src: url("../../static/fonts/Poppins-ExtraLight.ttf");
+}
+@font-face {
+  font-family: "Poppins ExtraBold";
+  src: url("../../static/fonts/Poppins-ExtraBold.ttf");
+}
