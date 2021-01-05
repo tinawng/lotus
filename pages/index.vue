@@ -1,49 +1,39 @@
 <template>
-  <div class="container">
-    <Logo
-      class="absolute z-0"
-      style="left: -22vh"
-      width="78vh"
-      height="78vh"
-      color="brand-gray"
-      border_width="1.2vw"
-    />
+  <section>
+    <div class="flex-vertical-center-x">
+      <Logo width="10rem" height="10rem" />
+      <div class="title mt-8">LoTUS</div>
+      <h3 class="mt-2">audio comparison tool</h3>
+    </div>
 
-    <section class="w-1/2 z-10 ml-auto">
-      <div class="flex-vertical-center-x">
-        <Logo width="10rem" height="10rem" />
-        <div class="title mt-8">LoTUS</div>
-        <h3 class="mt-2">audio comparison tool</h3>
-      </div>
+    <form
+      :action="backend_url + '/auth/login'"
+      method="POST"
+      v-on:submit.prevent="onSubmit"
+    >
+      <p class="mb-12">
+        <input v-model="login" type="text" name="login" placeholder="email" />
+      </p>
+      <p class="mb-6">
+        <input
+          v-model="password"
+          type="password"
+          name="password"
+          placeholder="password"
+        />
+      </p>
 
-      <form
-        class="w-2/3"
-        :action="backend_url + '/auth/login'"
-        method="POST"
-        v-on:submit.prevent="onSubmit"
-      >
-        <p>
-          <input v-model="login" type="text" name="login" placeholder="email" />
-        </p>
-        <p>
-          <input
-            v-model="password"
-            type="password"
-            name="password"
-            placeholder="password"
-          />
-        </p>
-
-        <p class="text-right">
-          <input class="button-square" type="submit" value=">" />
-        </p>
-      </form>
-    </section>
-  </div>
+      <p class="text-right">
+        <input class="button-square" type="submit" value=">" />
+      </p>
+    </form>
+  </section>
 </template>
 
 <script>
 export default {
+  layout: "login",
+
   computed: {
     backend_url() {
       return process.env.BACKEND_URL;
@@ -82,12 +72,13 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.container {
-  @apply min-h-screen;
-  @apply flex items-center;
-}
 section {
+  @apply w-1/4;
   height: 36vw;
+  @apply z-10;
+  @apply ml-auto;
+  margin-right: 25%;
+  @apply flex flex-col justify-between;
 }
 
 .title {

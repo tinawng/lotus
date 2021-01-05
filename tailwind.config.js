@@ -21,7 +21,7 @@ module.exports = {
       'screen': '100vw'
     },
     screens: {
-      'portrait': {'raw': '(orientation: portrait)'},
+      'portrait': { 'raw': '(orientation: portrait)' },
     }
   },
   variants: {
