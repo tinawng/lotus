@@ -13,7 +13,16 @@ module.exports = {
       'brand-white': theme('colors.brand-white'),
       'brand-gray': theme('colors.brand-gray'),
       'brand-black': theme('colors.brand-black'),
-    })
+    }),
+    backgroundColor: theme => ({
+      ...theme('colors'),
+    }),
+    minWidth: {
+      'screen': '100vw'
+    },
+    screens: {
+      'portrait': {'raw': '(orientation: portrait)'},
+    }
   },
   variants: {
     extend: {},
