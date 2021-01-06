@@ -24,7 +24,7 @@
       </p>
 
       <p class="text-right">
-        <input class="button-square" type="submit" value=">" />
+        <input class="button-square" style="line-height: 1.25" type="submit" value=">" />
       </p>
     </form>
   </section>

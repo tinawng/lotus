@@ -11,14 +11,18 @@
 
     <div class="absolute bottom-0 m-12 right-0 h-1.5 w-2/3 bg-brand-gray"></div>
 
-    <b
-      class="absolute bottom-40 m-12 right-0 transform -rotate-90 origin-bottom-right text-7xl text-brand-gray"
-      >LOGIN</b
+    <span
+      class="absolute m-12 right-0 bottom transform -rotate-90 origin-bottom-right bookmark"
     >
+      LOGIN
+    </span>
 
     <Nuxt />
   </div>
 </template>
 
 <style lang="postcss">
+.bottom {
+  bottom: 15.5rem;
+}
 </style>
