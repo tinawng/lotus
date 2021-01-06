@@ -1,7 +1,7 @@
 export default function ({ store, redirect, $http }) {
   // 🔒 Redirect if user is not authenticated
   if (!store.getters['auth/isAuth']) {
-    return redirect('/')
+    return redirect('/login')
   }
   // ♻️ On page refresh
   if (!$http._defaults.headers['Authorisation'])
