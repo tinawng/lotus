@@ -11,7 +11,8 @@ html {
   box-sizing: border-box;
 }
 
-strong {
+p {
+  @apply mb-4;
 }
 
 h1 {
@@ -19,7 +20,7 @@ h1 {
 h2 {
 }
 h3 {
-  @apply text-2xl;
+  @apply text-lg xl:text-2xl;
 }
 h4 {
 }
@@ -28,20 +29,18 @@ h5 {
 h6 {
 }
 .bookmark {
-  @apply text-brand-gray;
-  font-size: 5rem;
+  @apply text-6xl xl:text-7.5xl text-brand-gray ;
   font-weight: bolder;
   line-height: .8;
 }
 
-p {
-  @apply mb-4;
+strong {
 }
 
 input[type='text'], input[type='password'] {
   @apply w-full;
   @apply bg-transparent placeholder-brand-black;
-  @apply text-lg;
+  @apply text-sm xl:text-lg;
   @apply border-b border-brand-black;
   @apply pl-6 pb-2;
   letter-spacing: .3rem;

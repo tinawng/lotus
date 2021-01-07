@@ -44,6 +44,10 @@ export default {
     '@nuxt/http'
   ],
 
+  http: {
+    baseUrl: process.env.BACKEND_URL
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     html: {
