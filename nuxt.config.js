@@ -27,7 +27,7 @@ export default {
   plugins: [
     { src: '@/plugins/vue-material-design-ripple.js', mode: 'client' },
     { src: '@/plugins/vue-click-outside.js', mode: 'client' },
-    { src: '@/plugins/vuex-persist.js', mode: 'client' }
+    { src: '@/plugins/vuex-persistedstate.js' }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
