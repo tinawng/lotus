@@ -1,9 +1,5 @@
 <template>
   <div class="min-h-screen flex items-center">
-    <ClientOnly>
-      <ScreenDebug />
-    </ClientOnly>
-
     <Logo
       class="absolute z-0"
       style="left: -22vh"
@@ -23,7 +19,7 @@
   </div>
 </template>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .divider {
   @apply absolute bottom-0 right-0;
   @apply h-1.5 w-2/3;

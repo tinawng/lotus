@@ -1,10 +1,10 @@
-<template>
-  <div>coucou</div>
-</template>
+<template></template>
 
 <script>
 export default {
-  middleware: "authenticated",
+  created() {
+    this.$router.push("/overview");
+  },
 };
 </script>
 
