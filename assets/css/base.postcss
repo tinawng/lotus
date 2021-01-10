@@ -16,19 +16,27 @@ p {
 }
 
 h1 {
+  font-family: "Poppins ExtraBold";
+  @apply text-4xl xl:text-5xl;
+  line-height: .9;
 }
 h2 {
+  @apply xl:text-xl uppercase;
+  letter-spacing: .4rem;
 }
 h3 {
   @apply text-lg xl:text-2xl;
 }
 h4 {
-  @apply text-sm;
-  letter-spacing: .3rem;
+  @apply text-xxs xl:text-sm;
+  letter-spacing: .25rem;
 }
 h5 {
+  @apply text-xxs xl:text-xs;
 }
 h6 {
+  font-family: "Poppins ExtraBold";
+  @apply text-xxxs;
 }
 .bookmark {
   @apply text-6xl xl:text-7.5xl text-brand-gray ;

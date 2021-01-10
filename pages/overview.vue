@@ -1,48 +1,61 @@
 <template>
   <div class="container">
     <section>
-      <h4>Welcome back,</h4>
-      <h4><b>Samuel</b></h4>
-      <br />
-      <h4>There's <b>4 new recordings</b> waiting for you to review</h4>
+      <div>
+        <h4>Welcome back,</h4>
+        <h4><b>Samuel</b></h4>
+        <br />
+        <h4>There's <b>4 new recordings</b> waiting for you to review</h4>
+      </div>
+      <div>
+        <h4>Upload Recording</h4>
+        <h4>See Statistics</h4>
+        <h4>Manage Users</h4>
+        <h4>Settings</h4>
+        <h4>Logout</h4>
+      </div>
+    </section>
+    <section v-for="album in albums" :key="album.title">
+      <div class="flex">
+        <h1>01</h1>
+        <h6 class="ml-2">NEW</h6>
+      </div>
+      <divider />
+      <h2>{{ album.title }}</h2>
+      <h5>{{ album.description }}</h5>
+      <div class="flex justify-between">
+        <h4>{{ album.tracks_nb }} samples</h4>
+        ->
+      </div>
     </section>
     <section>
-      <h4>Welcome back,</h4>
-      <h4><b>Samuel</b></h4>
-      <br />
-      <h4>There's <b>4 new recordings</b> waiting for you to review</h4>
-    </section>
-    <section>
-      <h4>Welcome back,</h4>
-      <h4><b>Samuel</b></h4>
-      <br />
-      <h4>There's <b>4 new recordings</b> waiting for you to review</h4>
-    </section>
-    <section>
-      <h4>Welcome back,</h4>
-      <h4><b>Samuel</b></h4>
-      <br />
-      <h4>There's <b>4 new recordings</b> waiting for you to review</h4>
-    </section>
-    <section>
-      <h4>Welcome back,</h4>
-      <h4><b>Samuel</b></h4>
-      <br />
-      <h4>There's <b>4 new recordings</b> waiting for you to review</h4>
-    </section>
-    <section>
-      <h4>Welcome back,</h4>
-      <h4><b>Samuel</b></h4>
-      <br />
-      <h4>There's <b>4 new recordings</b> waiting for you to review</h4>
+      <div class="mt-auto flex justify-between">
+        <h4 class="mt-auto">see more</h4>
+        ->
+      </div>
     </section>
   </div>
 </template>
 
 <script>
+import Divider from "~/components/Divider.vue";
 export default {
   layout: "overview",
   middleware: "authenticated",
+
+  async asyncData({ $http }) {
+    const albums = await $http.$get("/album/");
+    albums.length = albums.length > 4 ? 4 : albums.length;
+
+    await Promise.all(
+      albums.map(async (album) => {
+        album.tracks_nb = (await $http.$get("/track/" + album._id)).length;
+        return album;
+      })
+    );
+
+    return { albums };
+  },
 };
 </script>
 
@@ -52,19 +65,20 @@ export default {
 
   padding-left: calc(2rem + 7vw + 2rem);
   padding-right: calc(2rem + 7vw + 2rem);
-  padding-top: 7vw;
-  padding-bottom: 7vw;
+  padding-top: 5vw;
+  padding-bottom: 5vw;
 
   @screen xl {
     padding-left: calc(3rem + 7vw + 3rem);
     padding-right: calc(3rem + 7vw + 3rem);
-    padding-top: 7vw;
-    padding-bottom: 7vw;
   }
 }
 
 section {
   @apply w-1/3;
+  height: 38vh;
   padding-right: calc(33% / 4);
+  @apply pt-10;
+  @apply flex flex-col justify-between;
 }
 </style>

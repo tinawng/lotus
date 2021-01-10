@@ -18,6 +18,9 @@ module.exports = {
         'xxl': '2000px',
       },
       fontSize: {
+        'xxxs': '.6rem',
+        'xxs': '.7rem',
+        'xs': '.8rem',
         '7.5xl': '5rem',
       }
     },
