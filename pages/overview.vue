@@ -25,7 +25,7 @@
       <h5>{{ album.description }}</h5>
       <div class="flex justify-between">
         <h4>{{ album.tracks_nb }} samples</h4>
-        ->
+        <arrow-button/>
       </div>
     </section>
     <section>
