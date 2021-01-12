@@ -75,7 +75,7 @@ export default {
 }
 
 section {
-  @apply w-1/3;
+  @apply w-1/2 lg:w-1/3;
   height: 38vh;
   padding-right: calc(33% / 4);
   @apply pt-10;

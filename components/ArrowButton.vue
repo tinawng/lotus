@@ -1,5 +1,5 @@
 <template>
-  <div class="button-container">
+  <div class="button-container group">
     <div class="shaft" />
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 490.8">
       <path
@@ -24,17 +24,15 @@ export default {};
 .button-container {
   @apply relative;
   @apply w-16 h-4;
-  @apply border-r border-brand-black;
+  @apply border-r border-brand-black hover:bg-brand-black;
+  transition: background .2s;
 }
 
 .shaft {
   @apply absolute top-1/2 right-0;
-  @apply w-full;
-  @apply border-t border-brand-black;
-  transition: all 1s;
-}
-.shaft:hover {
-  @apply w-1/2;
+  @apply w-full group-hover:w-1/2;
+  @apply h-px bg-brand-black group-hover:bg-brand-white;
+  transition: all .2s;
 }
 
 svg {
@@ -42,6 +40,7 @@ svg {
   @apply ml-auto;
 }
 path {
-  @apply fill-brand-black;
+  @apply fill-brand-black group-hover:fill-brand-white;
+  transition: fill .2s;
 }
 </style>

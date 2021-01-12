@@ -34,7 +34,10 @@ module.exports = {
     }),
   },
   variants: {
-    extend: {},
+    extend: {
+      width: ['group-hover'],
+      fill: ['group-hover']
+    },
   },
   plugins: [],
 }
