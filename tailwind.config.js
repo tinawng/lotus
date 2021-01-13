@@ -7,6 +7,7 @@ module.exports = {
         'brand-white': '#EFEFEF',
         'brand-gray': '#E4E4E4',
         'brand-black': '#434343',
+        'brand-deepblack': '#2E2E2E',
       },
       minWidth: {
         'screen': '100vw'
@@ -22,7 +23,10 @@ module.exports = {
         'xxs': '.7rem',
         'xs': '.8rem',
         '7.5xl': '5rem',
-      }
+      },
+      lineHeight: {
+        'normal': 'normal',
+       }
     },
     fill: theme => ({
       'brand-white': theme('colors.brand-white'),

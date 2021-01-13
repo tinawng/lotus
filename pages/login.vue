@@ -25,7 +25,7 @@
 
       <p class="text-right">
         <input
-          class="button-square"
+          class="button-square-big"
           style="line-height: 1.25"
           type="submit"
           value=">"

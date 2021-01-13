@@ -24,7 +24,7 @@
       <h2>{{ album.title }}</h2>
       <h5>{{ album.description }}</h5>
       <div class="flex justify-between items-center">
-        <h4>{{ album.tracks_nb }} samples</h4>
+        <h4 class="leading-normal">{{ album.tracks_nb }} samples</h4>
         <span class="button-square">></span>
       </div>
     </section>
@@ -49,6 +49,7 @@ export default {
 
     await Promise.all(
       albums.map(async (album) => {
+        album.description = album.description.length > 80 ? album.description.slice(0, 80)+"..." : album.description;
         album.tracks_nb = (await $http.$get("/track/" + album._id)).length;
         return album;
       })
