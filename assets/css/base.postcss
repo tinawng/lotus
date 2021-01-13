@@ -66,17 +66,21 @@ input:-webkit-autofill:focus {
 }
 
 .button-square {
-  @apply w-8 h-8;
+  @apply w-6 h-6 lg:w-8 lg:h-8;
   @apply border border-brand-black;
-  @apply text-xl;
+  @apply text-center lg:text-xl;
+  line-height: normal;
   
-  transition: all 0.414s ease-out !important;
+  transition: all 0.2s ease-out !important;
 }
 .button-square:hover {
   @apply bg-brand-black text-brand-white;
 }
+.button-square:active {
+  @apply bg-black;
+}
 button:focus {
-  @apply outline-none
+  @apply outline-none;
 }
 
 

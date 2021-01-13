@@ -23,15 +23,15 @@
       <divider />
       <h2>{{ album.title }}</h2>
       <h5>{{ album.description }}</h5>
-      <div class="flex justify-between">
+      <div class="flex justify-between items-center">
         <h4>{{ album.tracks_nb }} samples</h4>
-        <arrow-button/>
+        <span class="button-square">></span>
       </div>
     </section>
     <section>
       <div class="mt-auto flex justify-between">
         <h4 class="mt-auto">see more</h4>
-        ->
+        <arrow-button />
       </div>
     </section>
   </div>
