@@ -112,6 +112,14 @@ button:focus {
   @apply flex-vertical-center-x flex-vertical-center-y;
 }
 
+/* 💫 Vue Animation */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
 /* 🍱 Refs fonts */
 @font-face {
   font-family: "Poppins Regular";
