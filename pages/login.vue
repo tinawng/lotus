@@ -69,7 +69,7 @@ export default {
         this.$store.commit("auth/setUser", user);
 
         // 💨 Redirect
-        this.$router.push('/')
+        this.$router.push("/");
       } catch (error) {
         console.log(error);
       } finally {
@@ -90,15 +90,9 @@ section {
 }
 
 .title {
-  /* display: block; */
-    @apply text-5xl;
-    letter-spacing: 1rem;
-    margin-right: -1rem;
-  @screen xl {
-    @apply text-7xl;
-    letter-spacing: 1rem;
-    margin-right: -1rem;
-  }
+  @apply -mr-4;
+  @apply text-5xl xl:text-7xl;
+  letter-spacing: 1rem;
 }
 
 .subtitle {

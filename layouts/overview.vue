@@ -16,7 +16,6 @@
     <div class="bookmark-container">
       <span class="bookmark">OVERVIEW</span>
     </div>
-
     <div class="divider-container">
       <div class="divider" />
     </div>
@@ -28,7 +27,6 @@ export default {};
 </script>
 
 <style lang="postcss" scoped>
-
 .bookmark-container {
   @apply absolute right-0;
   bottom: 19rem;
