@@ -11,10 +11,7 @@ export default {
       lang: 'en'
     },
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: "preload", href: "./fonts/Poppins-Regular.ttf", as: "font", crossorigin: "" },
-      { rel: "preload", href: "./fonts/Poppins-ExtraLight.ttf", as: "font", crossorigin: "" },
-      { rel: "preload", href: "./fonts/Poppins-ExtraBold.ttf", as: "font", crossorigin: "" }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 
@@ -65,12 +62,6 @@ export default {
         removeComments: true,
         removeEmptyElements: true
       }
-    }
-  },
-
-  bundleRenderer: {
-    shouldPreload: (file, type) => {
-      return ['script', 'style', 'font'].includes(type)
     }
   },
 
