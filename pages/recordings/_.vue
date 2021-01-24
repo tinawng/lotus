@@ -51,7 +51,28 @@
       </div>
     </section>
     <section class="controls-container">
-      <h2>global controls...</h2>
+      <audio
+        v-show="false"
+        ref="player"
+        src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/Yodel_Sound_Effect.mp3"
+      ></audio>
+      <div class="control-progress">
+        <svg
+          v-if="!player_is_playing"
+          class="play-icon"
+          viewBox="0 0 24 24"
+          @click="play"
+        >
+          <path fill="currentColor" d="M8,5.14V19.14L19,12.14L8,5.14Z" />
+        </svg>
+        <svg v-else class="play-icon" viewBox="0 0 24 24" @click="pause">
+          <path fill="currentColor" d="M14,19H18V5H14M6,19H10V5H6V19Z" />
+        </svg>
+        <div class="progress-bar">
+          <div ref="progress-bar-done" class="progress-bar-done" />
+          <div ref="progress-thumb" class="progress-thumb" />
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -77,13 +98,58 @@ export default {
 
     return { album_infos, tracks };
   },
-
   data: () => ({
     selected_sample_a: 0,
     selected_sample_b: 1,
+    player_is_playing: false,
   }),
+  computed: {
+    reversedMessage: () => {
+      // return this.message.split('').reverse().join('')
+    },
+  },
 
-  methods: {},
+  mounted() {
+    let self = this;
+    // let dom_el = this.$refs["player-" + track._id][0];
+    // dom_el.addEventListener("playing", function (e) {
+    //   self.getPlayer(track).is_playing = true;
+    // });
+    // dom_el.addEventListener("play", function (e) {
+    //   self.getPlayer(track).is_playing = true;
+    // });
+    // dom_el.addEventListener("pause", function (e) {
+    //   self.getPlayer(track).is_playing = false;
+    // });
+
+    // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+    var player = this.$refs["player"];
+    player.ontimeupdate = () => {
+      var time_stamp = (player.currentTime / player.duration) * 100;
+      this.$refs["progress-thumb"].style.left = time_stamp + "%";
+      this.$refs["progress-bar-done"].style.width = time_stamp + "%";
+    };
+    player.onplay = () => {
+      self.player_is_playing = true;
+    };
+    player.onpause = () => {
+      self.player_is_playing = false;
+    };
+    player.onended = () => {
+      self.player_is_playing = false;
+    };
+  },
+
+  methods: {
+    play() {
+      var player = this.$refs["player"];
+      player.play();
+    },
+    pause() {
+      var player = this.$refs["player"];
+      player.pause();
+    },
+  },
 };
 </script>
 
@@ -92,13 +158,13 @@ export default {
   @apply min-h-screen min-w-full;
   @apply flex flex-col justify-between;
 
-  padding-left: calc(2rem + 7vw);
+  padding-left: calc(2rem + 6vw);
   padding-right: calc(1rem + 7vw);
   padding-top: 7vw;
   padding-bottom: 3vw;
 
   @screen xl {
-    padding-left: calc(7vw);
+    padding-left: calc(6vw);
     padding-right: calc(2rem + 7vw);
   }
 }
@@ -117,16 +183,17 @@ export default {
 }
 .sample-frame {
   @apply h-72;
-  width: calc(50% - 0.5rem);
+  width: calc(50% - 1.5rem);
   @apply py-14 px-12;
   @apply border border-brand-black;
   @apply flex flex-col justify-between;
 }
 .sample-frame:nth-of-type(1) {
-  @apply mr-2;
+  @apply mr-6;
+  /* @apply border-2; */
 }
 .sample-frame:nth-of-type(2) {
-  @apply ml-2;
+  @apply ml-6;
   @apply items-end;
 }
 .samples-nav {
@@ -138,5 +205,31 @@ export default {
 .controls-container {
   @apply mt-12;
   @apply flex-grow;
+}
+.control-progress {
+  @apply relative;
+  @apply h-16 w-2/3;
+  @apply px-6;
+  @apply border border-brand-black;
+  @apply flex items-center;
+}
+.play-icon {
+  @apply h-11 w-11;
+  @apply mr-6;
+}
+.progress-bar {
+  @apply relative;
+  @apply h-px w-full;
+  @apply bg-brand-black;
+}
+.progress-thumb {
+  @apply absolute -bottom-3;
+  @apply h-6 w-0.5;
+  @apply bg-brand-black;
+}
+.progress-bar-done {
+  @apply absolute -bottom-px;
+  height: 3px;
+  @apply bg-brand-black;
 }
 </style>
