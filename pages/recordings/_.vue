@@ -68,9 +68,15 @@
         <svg v-else class="play-icon" viewBox="0 0 24 24" @click="pause">
           <path fill="currentColor" d="M14,19H18V5H14M6,19H10V5H6V19Z" />
         </svg>
-        <div class="progress-bar">
-          <div ref="progress-bar-done" class="progress-bar-done" />
-          <div ref="progress-thumb" class="progress-thumb" />
+        <div
+          ref="progress-bar-container"
+          class="progress-bar-container"
+          @click="seek"
+        >
+          <div class="progress-bar">
+            <div ref="progress-bar-done" class="progress-bar-done" />
+            <div ref="progress-thumb" class="progress-thumb" />
+          </div>
         </div>
       </div>
     </section>
@@ -110,22 +116,11 @@ export default {
   },
 
   mounted() {
-    let self = this;
-    // let dom_el = this.$refs["player-" + track._id][0];
-    // dom_el.addEventListener("playing", function (e) {
-    //   self.getPlayer(track).is_playing = true;
-    // });
-    // dom_el.addEventListener("play", function (e) {
-    //   self.getPlayer(track).is_playing = true;
-    // });
-    // dom_el.addEventListener("pause", function (e) {
-    //   self.getPlayer(track).is_playing = false;
-    // });
-
     // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
-    var player = this.$refs["player"];
+    const self = this;
+    const player = this.$refs["player"];
     player.ontimeupdate = () => {
-      var time_stamp = (player.currentTime / player.duration) * 100;
+      const time_stamp = (player.currentTime / player.duration) * 100;
       this.$refs["progress-thumb"].style.left = time_stamp + "%";
       this.$refs["progress-bar-done"].style.width = time_stamp + "%";
     };
@@ -142,12 +137,21 @@ export default {
 
   methods: {
     play() {
-      var player = this.$refs["player"];
+      const player = this.$refs["player"];
       player.play();
     },
     pause() {
-      var player = this.$refs["player"];
+      const player = this.$refs["player"];
       player.pause();
+    },
+    seek(event) {
+      const player = this.$refs["player"];
+      const maxWidth = this.$refs["progress-bar-container"].clientWidth;
+
+      player.currentTime = Math.max(
+        0,
+        Math.min((event.offsetX / maxWidth) * player.duration, player.duration)
+      );
     },
   },
 };
@@ -216,6 +220,13 @@ export default {
 .play-icon {
   @apply h-11 w-11;
   @apply mr-6;
+  @apply cursor-pointer;
+}
+.progress-bar-container {
+  @apply relative;
+  @apply h-1/2 w-full;
+  @apply flex items-center;
+  @apply cursor-pointer;
 }
 .progress-bar {
   @apply relative;
